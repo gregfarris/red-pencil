@@ -1,12 +1,11 @@
 package org.tonquin.shop;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
-import lombok.*;
-
-import org.joda.time.LocalDate;
 
 @Data
 public class CatalogItem {
@@ -35,12 +34,12 @@ public class CatalogItem {
 
     public boolean hasPromotion() {
 
-        return promotion == null ? false : true;
+        return promotion != null;
     }
 
     public boolean hasPromotionExpired() {
 
-        return promotion == null ? true : promotion.hasPromotionExpired();
+        return promotion == null || promotion.hasPromotionExpired();
     }
 
     public void cancelPromotion() {

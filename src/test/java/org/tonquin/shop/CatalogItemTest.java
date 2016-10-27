@@ -1,15 +1,12 @@
 package org.tonquin.shop;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
-import org.joda.time.LocalDate;
-import org.junit.Before;
-import org.junit.Test;
-import org.tonquin.shop.CatalogItem;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CatalogItemTest {
 

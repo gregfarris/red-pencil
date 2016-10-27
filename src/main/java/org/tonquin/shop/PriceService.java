@@ -2,9 +2,8 @@ package org.tonquin.shop;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
-
-import org.joda.time.LocalDate;
 
 public class PriceService {
 
@@ -29,7 +28,7 @@ public class PriceService {
 
 					if (item.getPriceSetDate().isBefore(LocalDate.now().minusDays(30))) {
 
-						item.setPromotion(new Promotion(new LocalDate(), 30, item.getPrice() ) );
+						item.setPromotion(new Promotion(LocalDate.now(), 30, item.getPrice() ) );
 					}
 				}
 
@@ -48,7 +47,7 @@ public class PriceService {
 		}
 
 		item.setPrice(newPrice.setScale(2, RoundingMode.HALF_EVEN));
-		item.setPriceSetDate(new LocalDate());
+		item.setPriceSetDate(LocalDate.now());
 
 	}
 
@@ -64,7 +63,8 @@ public class PriceService {
 
 	/**
 	 * 
-	 * @param percentageDifference
+	 * @param currentPrice
+	 * @param newPrice
 	 * @return
 	 */
 	protected boolean isDifferenceBetweenFiveandThrityPercent(BigDecimal currentPrice, BigDecimal newPrice) {

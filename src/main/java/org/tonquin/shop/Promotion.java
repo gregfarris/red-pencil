@@ -1,9 +1,9 @@
 package org.tonquin.shop;
 
 import lombok.Data;
-import org.joda.time.LocalDate;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 public class Promotion {
@@ -37,12 +37,8 @@ public class Promotion {
     }
     
 	public boolean hasPromotionExpired(){
-		
-		if( canceled!=null || LocalDate.now().isAfter(end) ) {
-			return true;
-		}
-		
-		return false;
-				
+
+		return canceled != null || LocalDate.now().isAfter(end);
+
 	}
 }

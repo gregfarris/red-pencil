@@ -1,14 +1,18 @@
 package org.tonquin.shop;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import org.joda.time.LocalDate;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
+import static org.junit.Assert.assertEquals;
+
 public class PromotionTest {
+
+	@Test
+	public void name() throws Exception {
+
+
+	}
 
 	/**
 	 * Promotion Number Of Active Days
@@ -16,7 +20,7 @@ public class PromotionTest {
 	@Test
 	public void testExpired() {
 		
-		LocalDate  startDate = new LocalDate(2014, 11, 10);
+		LocalDate startDate =  LocalDate.of(2014, 11, 10);
 		Promotion aPromotion = new Promotion( startDate, 10, null);
 		assertEquals("should have expired", true, aPromotion.hasPromotionExpired());
 		
@@ -34,7 +38,7 @@ public class PromotionTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testOverThrityDays() {
 		
-		new Promotion( new LocalDate(), 31, null);
+		new Promotion( LocalDate.now(), 31, null);
 		
 	}
 		
